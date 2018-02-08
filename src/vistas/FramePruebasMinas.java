@@ -62,10 +62,22 @@ public class FramePruebasMinas extends javax.swing.JFrame {
         this.fuente=new Font("Yu Gothic UI Semilight", 1, 14);
         this.ui.put("OptionPane.messageFont",fuente );
         this.ui.put("OptionPane.buttonFont",fuente );
+        this.jComboBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int minaActual = jComboBox1.getSelectedIndex(); //To change body of generated methods, choose Tools | Templates.
+                label_tipoMina.setText("Tipo de mina: "+logicaMinas.getMinas().get(minaActual).getMetal()+"");
+                label_CantidadMineral.setText("Cantidad de mineral: "+logicaMinas.getMinas().get(minaActual).getValorMineral()+"");
+                label_Ganancia.setText("Ganacia: "+logicaMinas.getMinas().get(minaActual).getGananciaMina()+"");
+                label_Depositos.setText("Depositos: "+logicaMinas.getMinas().get(minaActual).getValorTotal()+"");
+            }
+        });
         seticon();
         
     }
-
+    private void crearComboBox1(String c){
+        
+    } 
     
     public void crearMina(int tamaño,int tamaño1, String material, int minerosMaximos, int capacidadDeposito) {
         this.esEntrada=false;
@@ -86,6 +98,7 @@ public class FramePruebasMinas extends javax.swing.JFrame {
             yaux += 40;
         }
         logicaMinas.crearMinaIniciale(mina, tamaño, material, minerosMaximos, "Mina " + cantMinas,capacidadDeposito);
+        jComboBox1.addItem("Mina " + cantMinas);
         xMina = xtotal + 40;
         crearDetalleMina(material,xtotal,yaux);
     }
@@ -253,10 +266,20 @@ public class FramePruebasMinas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondo2 = new vistas.Fondo();
+        jPanel1 = new javax.swing.JPanel();
         botonMinas = new javax.swing.JButton();
         botonMineros = new javax.swing.JButton();
-        fondo2 = new vistas.Fondo();
         jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        label_MinerosMax = new javax.swing.JLabel();
+        label_MinerosAsignados = new javax.swing.JLabel();
+        label_tipoMina = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        label_CantidadMineral = new javax.swing.JLabel();
+        label_Ganancia = new javax.swing.JLabel();
+        label_Depositos = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         JSON = new javax.swing.JMenuItem();
@@ -265,6 +288,21 @@ public class FramePruebasMinas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Minas El Álamo");
+
+        fondo2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+
+        javax.swing.GroupLayout fondo2Layout = new javax.swing.GroupLayout(fondo2);
+        fondo2.setLayout(fondo2Layout);
+        fondo2Layout.setHorizontalGroup(
+            fondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 374, Short.MAX_VALUE)
+        );
+        fondo2Layout.setVerticalGroup(
+            fondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         botonMinas.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 11)); // NOI18N
         botonMinas.setText("Crear Mina");
@@ -282,26 +320,98 @@ public class FramePruebasMinas extends javax.swing.JFrame {
             }
         });
 
-        fondo2.setAutoscrolls(true);
-        fondo2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-
-        javax.swing.GroupLayout fondo2Layout = new javax.swing.GroupLayout(fondo2);
-        fondo2.setLayout(fondo2Layout);
-        fondo2Layout.setHorizontalGroup(
-            fondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-        fondo2Layout.setVerticalGroup(
-            fondo2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         jButton1.setText("Crear caminos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonMineros, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                    .addComponent(botonMinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonMinas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonMineros)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(12, 12, 12))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        label_MinerosMax.setText("Mineros maximos: --");
+
+        label_MinerosAsignados.setText("Mineros asignados: --");
+
+        label_tipoMina.setText("Tipo de mina: --");
+
+        label_CantidadMineral.setText("Cantidad de mineral: --");
+
+        label_Ganancia.setText("Ganancia: --");
+
+        label_Depositos.setText("Depositos: --");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_tipoMina)
+                            .addComponent(label_MinerosAsignados)
+                            .addComponent(label_MinerosMax)
+                            .addComponent(label_CantidadMineral)
+                            .addComponent(label_Ganancia)
+                            .addComponent(label_Depositos))
+                        .addGap(0, 44, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_tipoMina)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_CantidadMineral)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_Ganancia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_Depositos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_MinerosMax)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_MinerosAsignados)
+                .addGap(7, 7, 7))
+        );
 
         jMenu1.setText("File");
         jMenu1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
@@ -335,11 +445,10 @@ public class FramePruebasMinas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonMineros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonMinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fondo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -350,13 +459,9 @@ public class FramePruebasMinas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fondo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(botonMinas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonMineros)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(0, 112, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -480,6 +585,10 @@ public class FramePruebasMinas extends javax.swing.JFrame {
         logicaMinas.minasPath();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -521,10 +630,20 @@ public class FramePruebasMinas extends javax.swing.JFrame {
     private javax.swing.JButton botonMineros;
     private vistas.Fondo fondo2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel label_CantidadMineral;
+    private javax.swing.JLabel label_Depositos;
+    private javax.swing.JLabel label_Ganancia;
+    private javax.swing.JLabel label_MinerosAsignados;
+    private javax.swing.JLabel label_MinerosMax;
+    private javax.swing.JLabel label_tipoMina;
     // End of variables declaration//GEN-END:variables
 
     private void seticon() {
