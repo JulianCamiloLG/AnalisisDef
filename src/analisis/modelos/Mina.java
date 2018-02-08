@@ -254,4 +254,5 @@ public class Mina {
         this.tieneEntrada = tieneEntrada;
     }    
     
+    
 }
