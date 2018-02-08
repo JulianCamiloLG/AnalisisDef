@@ -220,12 +220,8 @@ public class LogicaMinas {
         return result;
     }
 
-    LinkedList<Mina> obtenerMinas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public LinkedList<Mina> getMinas() {
-        return minas;
+        return this.minas;
     }
     
     

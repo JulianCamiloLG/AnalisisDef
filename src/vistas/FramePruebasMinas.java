@@ -28,6 +28,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import logica.LogicaJSON;
 import logica.LogicaMinas;
+import logica.LogicaMineros;
 
 /**
  *
@@ -550,6 +551,8 @@ public class FramePruebasMinas extends javax.swing.JFrame {
             popup.setVisible(false);
             JOptionPane.showMessageDialog(rootPane, "Usted a contratado: "+totalMineros+" mineros");
             botonMineros.setEnabled(false);
+            LogicaMineros manejomiMineros= new LogicaMineros(totalMineros, totalMineros, totalMineros, totalMineros);
+            manejomiMineros.AsignarMineros(logicaMinas.getMinas());
         });
         
         popup.add(mensajeentrada);
