@@ -2,6 +2,7 @@
 package vistas;
 
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,7 +46,10 @@ public class FramePruebasMinas extends javax.swing.JFrame {
     private UIManager ui;
     private Image icon;
     private LinkedList<Prueba> paneles;
-    
+    private Image minero_oro;
+    private Image minero_cobre;
+    private Image minero_plata;
+    private Image minero_comodin;
       /**
      * Creates new form FramePruebasMinas
      */
@@ -62,6 +66,11 @@ public class FramePruebasMinas extends javax.swing.JFrame {
         this.fuente=new Font("Yu Gothic UI Semilight", 1, 14);
         this.ui.put("OptionPane.messageFont",fuente );
         this.ui.put("OptionPane.buttonFont",fuente );
+        minero_oro = cargarImagen("src/img/mineros/MineroOro1.png");
+        minero_cobre = cargarImagen("src/img/mineros/MineroCobre1.png");;
+        minero_plata = cargarImagen("src/img/mineros/MineroPlata1.png");;
+        minero_comodin = cargarImagen("src/img/mineros/MineroComodin1.png");;
+        
         this.jComboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,8 +84,10 @@ public class FramePruebasMinas extends javax.swing.JFrame {
         seticon();
         
     }
-    private void crearComboBox1(String c){
-        
+    @Override
+    public void paint(Graphics g){
+        super.paint(g);
+        g.drawImage(this.minero_oro, 50, 50, this);
     } 
     
     public void crearMina(int tamaño,int tamaño1, String material, int minerosMaximos, int capacidadDeposito) {
@@ -653,6 +664,18 @@ public class FramePruebasMinas extends javax.swing.JFrame {
         } catch (IOException ex) {
             System.out.println("no se pudo cargar la imagen");
         }
+    }
+    
+    private Image cargarImagen(String src){
+        Image img;
+        try {
+            img=ImageIO.read(new File(src));
+            setIconImage(icon);
+            return img;
+        } catch (IOException ex) {
+            System.out.println("no se pudo cargar la imagen");
+        }
+        return null;
     }
 
     private void crearMinasJSON(Object[] datos) {
