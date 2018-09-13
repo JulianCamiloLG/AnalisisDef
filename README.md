@@ -1,4 +1,4 @@
-Administración de mineros
+# Administración de mineros
 Proyecto realizado en Java8, utilizando algoritmo A*
 Permite la creación y administración de minas de distintos materiales, en este caso oro, plata y cobre
 Asi como asignación mas óptima de los mineros disponibles para obtener la mayor ganancia.
